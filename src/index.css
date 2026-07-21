@@ -1,0 +1,66 @@
+/* SPDX-License-Identifier: AGPL-3.0-only */
+@import '@fontsource-variable/archivo';
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/500.css';
+@import '@fontsource/ibm-plex-sans/600.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --console: #17130F;
+    --bakelite: #26201A;
+    --hairline: #3A3127;
+    --cream: #F2E8D8;
+    --cream-dim: #B7AA96;
+    --tally: #E5484D;
+    --vu-amber: #F0A83C;
+    --phosphor: #4CC38A;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    line-height: 1.5;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+  }
+
+  /* Tabular figures for all mono text */
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Focus rings */
+  :focus-visible {
+    outline: 2px solid var(--vu-amber);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--console);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--hairline);
+    border-radius: 3px;
+  }
+}
+
+@layer utilities {
+  .panel {
+    @apply bg-bakelite border border-hairline rounded-md;
+  }
+}

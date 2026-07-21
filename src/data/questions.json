@@ -1,0 +1,642 @@
+[
+  {
+    "id": "intro-1",
+    "category": "Tell Me About Yourself",
+    "text": "Walk me through your background and what brought you here today.",
+    "targetSeconds": [60, 90],
+    "coach": "They want a concise narrative arc connecting your past experience to this specific role.",
+    "structure": null
+  },
+  {
+    "id": "intro-2",
+    "category": "Tell Me About Yourself",
+    "text": "Give me your 60-second elevator pitch.",
+    "targetSeconds": [60, 90],
+    "coach": "They're testing whether you can distill your value proposition under pressure.",
+    "structure": null
+  },
+  {
+    "id": "intro-3",
+    "category": "Tell Me About Yourself",
+    "text": "How would your current manager describe you in three words?",
+    "targetSeconds": [60, 90],
+    "coach": "They want self-awareness and evidence that you understand how others perceive you.",
+    "structure": null
+  },
+  {
+    "id": "intro-4",
+    "category": "Tell Me About Yourself",
+    "text": "What's the common thread across the roles you've held so far?",
+    "targetSeconds": [60, 90],
+    "coach": "They're looking for intentionality in your career rather than random job-hopping.",
+    "structure": null
+  },
+  {
+    "id": "intro-5",
+    "category": "Tell Me About Yourself",
+    "text": "Tell me something about yourself that isn't on your resume.",
+    "targetSeconds": [60, 90],
+    "coach": "They want to see personality, authenticity, and whether you're a culture add.",
+    "structure": null
+  },
+  {
+    "id": "intro-6",
+    "category": "Tell Me About Yourself",
+    "text": "If you had to summarize your career in a single headline, what would it be?",
+    "targetSeconds": [60, 90],
+    "coach": "They're assessing your ability to communicate with clarity and creativity.",
+    "structure": null
+  },
+  {
+    "id": "intro-7",
+    "category": "Tell Me About Yourself",
+    "text": "What are you most proud of professionally, and why?",
+    "targetSeconds": [60, 90],
+    "coach": "They want to understand what you value and how you measure personal success.",
+    "structure": null
+  },
+  {
+    "id": "intro-8",
+    "category": "Tell Me About Yourself",
+    "text": "Why are you looking for a change right now?",
+    "targetSeconds": [60, 90],
+    "coach": "They're probing for red flags like running away versus running toward something.",
+    "structure": null
+  },
+  {
+    "id": "beh-team-1",
+    "category": "Behavioral — Teamwork & Conflict",
+    "text": "Tell me about a time you had to work with someone whose style clashed with yours.",
+    "targetSeconds": [90, 150],
+    "coach": "They want to see your conflict resolution approach and emotional intelligence.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-team-2",
+    "category": "Behavioral — Teamwork & Conflict",
+    "text": "Describe a situation where your team disagreed on a key decision. How did you handle it?",
+    "targetSeconds": [90, 150],
+    "coach": "They're evaluating whether you can influence without authority and drive consensus.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-team-3",
+    "category": "Behavioral — Teamwork & Conflict",
+    "text": "Give me an example of a time you had to give tough feedback to a peer.",
+    "targetSeconds": [90, 150],
+    "coach": "They want evidence you can be direct while maintaining professional relationships.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-team-4",
+    "category": "Behavioral — Teamwork & Conflict",
+    "text": "Tell me about a cross-functional project where misalignment threatened the outcome.",
+    "targetSeconds": [90, 150],
+    "coach": "They're assessing your ability to navigate organizational complexity and competing priorities.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-team-5",
+    "category": "Behavioral — Teamwork & Conflict",
+    "text": "Describe a time you had to rebuild trust with a colleague after a breakdown.",
+    "targetSeconds": [90, 150],
+    "coach": "They want to see accountability, humility, and relationship repair skills.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-team-6",
+    "category": "Behavioral — Teamwork & Conflict",
+    "text": "Tell me about a time you disagreed with your manager's decision. What did you do?",
+    "targetSeconds": [90, 150],
+    "coach": "They're testing whether you can disagree and commit without being passive-aggressive.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-team-7",
+    "category": "Behavioral — Teamwork & Conflict",
+    "text": "Give me an example of when you helped a struggling teammate without being asked.",
+    "targetSeconds": [90, 150],
+    "coach": "They want to see collaborative instinct and whether you lift others up proactively.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-team-8",
+    "category": "Behavioral — Teamwork & Conflict",
+    "text": "Describe a situation where you had to manage competing stakeholder expectations.",
+    "targetSeconds": [90, 150],
+    "coach": "They're looking for stakeholder management skill and your ability to say no diplomatically.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-fail-1",
+    "category": "Behavioral — Failure & Growth",
+    "text": "Tell me about your biggest professional failure and what you learned from it.",
+    "targetSeconds": [90, 150],
+    "coach": "They want genuine vulnerability plus evidence of a concrete behavior change afterward.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-fail-2",
+    "category": "Behavioral — Failure & Growth",
+    "text": "Describe a project that didn't go as planned. What would you do differently?",
+    "targetSeconds": [90, 150],
+    "coach": "They're testing your ability to reflect honestly without deflecting blame.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-fail-3",
+    "category": "Behavioral — Failure & Growth",
+    "text": "Tell me about a time you received critical feedback that was hard to hear.",
+    "targetSeconds": [90, 150],
+    "coach": "They want to see coachability and whether you internalize feedback or get defensive.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-fail-4",
+    "category": "Behavioral — Failure & Growth",
+    "text": "Give me an example of a goal you missed. How did you respond?",
+    "targetSeconds": [90, 150],
+    "coach": "They're assessing resilience and whether you take ownership of outcomes.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-fail-5",
+    "category": "Behavioral — Failure & Growth",
+    "text": "Describe a time you made a bad hire or misread a person. What happened?",
+    "targetSeconds": [90, 150],
+    "coach": "They want to see judgment growth and what you've refined in your assessment of people.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-fail-6",
+    "category": "Behavioral — Failure & Growth",
+    "text": "Tell me about a time you had to pivot your strategy mid-execution because your original plan wasn't working.",
+    "targetSeconds": [90, 150],
+    "coach": "They're testing adaptability and whether you cling to sunk costs or adjust quickly.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-fail-7",
+    "category": "Behavioral — Failure & Growth",
+    "text": "Describe a skill gap that held you back. How did you close it?",
+    "targetSeconds": [90, 150],
+    "coach": "They want evidence of self-directed growth and a learning mindset.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-fail-8",
+    "category": "Behavioral — Failure & Growth",
+    "text": "Tell me about a time you underestimated the complexity of something. What was the impact?",
+    "targetSeconds": [90, 150],
+    "coach": "They're probing your planning maturity and how you handle scope surprises.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-lead-1",
+    "category": "Behavioral — Leadership & Initiative",
+    "text": "Tell me about a time you led a project without formal authority.",
+    "targetSeconds": [90, 150],
+    "coach": "They want to see influence skills and whether you can mobilize people through vision alone.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-lead-2",
+    "category": "Behavioral — Leadership & Initiative",
+    "text": "Describe a situation where you identified a problem nobody else was addressing and took ownership.",
+    "targetSeconds": [90, 150],
+    "coach": "They're assessing proactive bias and whether you wait for permission or act.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-lead-3",
+    "category": "Behavioral — Leadership & Initiative",
+    "text": "Give me an example of a time you had to make a tough call with incomplete information.",
+    "targetSeconds": [90, 150],
+    "coach": "They want to see decisiveness under ambiguity and how you manage risk.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-lead-4",
+    "category": "Behavioral — Leadership & Initiative",
+    "text": "Tell me about a time you championed an unpopular idea that ultimately succeeded.",
+    "targetSeconds": [90, 150],
+    "coach": "They're testing conviction, persuasion skills, and whether you can stand alone when needed.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-lead-5",
+    "category": "Behavioral — Leadership & Initiative",
+    "text": "Describe how you onboarded or mentored someone who went on to do great work.",
+    "targetSeconds": [90, 150],
+    "coach": "They want to see multiplier behavior—do you develop others or just focus on yourself?",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-lead-6",
+    "category": "Behavioral — Leadership & Initiative",
+    "text": "Tell me about a time you had to rally a demoralized team.",
+    "targetSeconds": [90, 150],
+    "coach": "They're evaluating emotional leadership and whether you can restore momentum.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-lead-7",
+    "category": "Behavioral — Leadership & Initiative",
+    "text": "Give me an example of when you pushed back on a request from leadership because it was the right thing to do.",
+    "targetSeconds": [90, 150],
+    "coach": "They want to see principled courage and whether you manage up effectively.",
+    "structure": "STAR"
+  },
+  {
+    "id": "beh-lead-8",
+    "category": "Behavioral — Leadership & Initiative",
+    "text": "Describe a time you had to delegate something you were personally attached to.",
+    "targetSeconds": [90, 150],
+    "coach": "They're testing whether you can let go, trust others, and scale through delegation.",
+    "structure": "STAR"
+  },
+  {
+    "id": "str-1",
+    "category": "Strengths & Weaknesses",
+    "text": "What's your superpower—the thing you do better than most people in your role?",
+    "targetSeconds": [60, 120],
+    "coach": "They want confident self-assessment backed by specific proof, not vague platitudes.",
+    "structure": null
+  },
+  {
+    "id": "str-2",
+    "category": "Strengths & Weaknesses",
+    "text": "What's a real weakness you're actively managing?",
+    "targetSeconds": [60, 120],
+    "coach": "They're testing authenticity—they can smell fake weaknesses disguised as strengths.",
+    "structure": null
+  },
+  {
+    "id": "str-3",
+    "category": "Strengths & Weaknesses",
+    "text": "What kind of work drains you, and how do you handle it?",
+    "targetSeconds": [60, 120],
+    "coach": "They want to understand your energy patterns and whether the role will burn you out.",
+    "structure": null
+  },
+  {
+    "id": "str-4",
+    "category": "Strengths & Weaknesses",
+    "text": "What would your harshest critic say about working with you?",
+    "targetSeconds": [60, 120],
+    "coach": "They're probing self-awareness and whether you've internalized developmental feedback.",
+    "structure": null
+  },
+  {
+    "id": "str-5",
+    "category": "Strengths & Weaknesses",
+    "text": "What's a skill you've had to work unusually hard to develop?",
+    "targetSeconds": [60, 120],
+    "coach": "They want to see grit and whether you can grow outside your natural talents.",
+    "structure": null
+  },
+  {
+    "id": "str-6",
+    "category": "Strengths & Weaknesses",
+    "text": "How do you compensate for areas where you're not naturally strong?",
+    "targetSeconds": [60, 120],
+    "coach": "They're looking for strategic self-management—do you build systems or just wing it?",
+    "structure": null
+  },
+  {
+    "id": "str-7",
+    "category": "Strengths & Weaknesses",
+    "text": "What type of feedback do you find hardest to act on?",
+    "targetSeconds": [60, 120],
+    "coach": "They want honesty about blind spots and evidence of growth orientation.",
+    "structure": null
+  },
+  {
+    "id": "str-8",
+    "category": "Strengths & Weaknesses",
+    "text": "If I asked your teammates what makes you indispensable, what would they say?",
+    "targetSeconds": [60, 120],
+    "coach": "They're testing whether your perceived value aligns with what the role actually needs.",
+    "structure": null
+  },
+  {
+    "id": "mot-1",
+    "category": "Motivation & Company Fit",
+    "text": "Why this company, and why now?",
+    "targetSeconds": [60, 120],
+    "coach": "They want to hear genuine research and alignment, not generic flattery.",
+    "structure": null
+  },
+  {
+    "id": "mot-2",
+    "category": "Motivation & Company Fit",
+    "text": "What does your ideal work environment look like?",
+    "targetSeconds": [60, 120],
+    "coach": "They're checking culture fit and whether you'll thrive in their specific setup.",
+    "structure": null
+  },
+  {
+    "id": "mot-3",
+    "category": "Motivation & Company Fit",
+    "text": "Where do you see yourself in three years?",
+    "targetSeconds": [60, 120],
+    "coach": "They want ambition that's realistic and aligned with the growth path they can offer.",
+    "structure": null
+  },
+  {
+    "id": "mot-4",
+    "category": "Motivation & Company Fit",
+    "text": "What would make you turn down this offer?",
+    "targetSeconds": [60, 120],
+    "coach": "They're testing honesty and trying to surface deal-breakers early.",
+    "structure": null
+  },
+  {
+    "id": "mot-5",
+    "category": "Motivation & Company Fit",
+    "text": "What's the most important thing for you in your next role?",
+    "targetSeconds": [60, 120],
+    "coach": "They want to understand your true motivators beyond compensation.",
+    "structure": null
+  },
+  {
+    "id": "mot-6",
+    "category": "Motivation & Company Fit",
+    "text": "How do you stay motivated during repetitive or ambiguous stretches of work?",
+    "targetSeconds": [60, 120],
+    "coach": "They're probing intrinsic motivation and resilience during the unglamorous parts.",
+    "structure": null
+  },
+  {
+    "id": "mot-7",
+    "category": "Motivation & Company Fit",
+    "text": "What's a company value of ours that resonates with you personally? Why?",
+    "targetSeconds": [60, 120],
+    "coach": "They want to see you've done homework and can connect values to lived experience.",
+    "structure": null
+  },
+  {
+    "id": "mot-8",
+    "category": "Motivation & Company Fit",
+    "text": "What would you want to accomplish in your first 90 days here?",
+    "targetSeconds": [60, 120],
+    "coach": "They're assessing strategic thinking about ramp-up and early impact.",
+    "structure": null
+  },
+  {
+    "id": "prob-1",
+    "category": "Problem-Solving & Judgment",
+    "text": "Walk me through a complex problem you broke down into manageable parts.",
+    "targetSeconds": [90, 150],
+    "coach": "They want to see structured thinking and how you decompose ambiguity.",
+    "structure": "STAR"
+  },
+  {
+    "id": "prob-2",
+    "category": "Problem-Solving & Judgment",
+    "text": "Tell me about a time you had to make a decision with conflicting data.",
+    "targetSeconds": [90, 150],
+    "coach": "They're testing analytical rigor and comfort with uncertainty.",
+    "structure": "STAR"
+  },
+  {
+    "id": "prob-3",
+    "category": "Problem-Solving & Judgment",
+    "text": "Describe a situation where you identified a root cause that others had missed.",
+    "targetSeconds": [90, 150],
+    "coach": "They want evidence of depth over surface-level thinking.",
+    "structure": "STAR"
+  },
+  {
+    "id": "prob-4",
+    "category": "Problem-Solving & Judgment",
+    "text": "Tell me about a time you had to prioritize ruthlessly with limited resources.",
+    "targetSeconds": [90, 150],
+    "coach": "They're assessing trade-off thinking and strategic prioritization.",
+    "structure": "STAR"
+  },
+  {
+    "id": "prob-5",
+    "category": "Problem-Solving & Judgment",
+    "text": "Give me an example of when you used data to change someone's mind.",
+    "targetSeconds": [90, 150],
+    "coach": "They want to see data fluency combined with persuasion skill.",
+    "structure": "STAR"
+  },
+  {
+    "id": "prob-6",
+    "category": "Problem-Solving & Judgment",
+    "text": "Describe a time you had to solve a problem outside your area of expertise.",
+    "targetSeconds": [90, 150],
+    "coach": "They're testing resourcefulness and how quickly you ramp on unfamiliar territory.",
+    "structure": "STAR"
+  },
+  {
+    "id": "prob-7",
+    "category": "Problem-Solving & Judgment",
+    "text": "Tell me about a time you anticipated a problem before it became critical.",
+    "targetSeconds": [90, 150],
+    "coach": "They want forward-thinking and proactive risk identification.",
+    "structure": "STAR"
+  },
+  {
+    "id": "prob-8",
+    "category": "Problem-Solving & Judgment",
+    "text": "Describe a situation where the obvious solution was wrong. How did you figure that out?",
+    "targetSeconds": [90, 150],
+    "coach": "They're evaluating critical thinking and intellectual humility.",
+    "structure": "STAR"
+  },
+  {
+    "id": "curve-1",
+    "category": "Curveballs",
+    "text": "If you could have dinner with anyone alive or dead, who and why?",
+    "targetSeconds": [45, 90],
+    "coach": "They're testing quick thinking, personality, and whether you can be interesting under pressure.",
+    "structure": null
+  },
+  {
+    "id": "curve-2",
+    "category": "Curveballs",
+    "text": "Explain something complex that you know well to me as if I'm a smart 10-year-old.",
+    "targetSeconds": [45, 90],
+    "coach": "They want to see communication clarity and whether you can simplify without condescending.",
+    "structure": null
+  },
+  {
+    "id": "curve-3",
+    "category": "Curveballs",
+    "text": "What's a hill you'll die on professionally?",
+    "targetSeconds": [45, 90],
+    "coach": "They're probing your values and conviction—and whether those align with the team.",
+    "structure": null
+  },
+  {
+    "id": "curve-4",
+    "category": "Curveballs",
+    "text": "If you joined and in six months things weren't working out, what would likely be the reason?",
+    "targetSeconds": [45, 90],
+    "coach": "They want radical self-awareness about fit risks and potential friction points.",
+    "structure": null
+  },
+  {
+    "id": "curve-5",
+    "category": "Curveballs",
+    "text": "What's the most counterintuitive thing you've learned in your career?",
+    "targetSeconds": [45, 90],
+    "coach": "They're testing depth of reflection and whether you think originally.",
+    "structure": null
+  },
+  {
+    "id": "curve-6",
+    "category": "Curveballs",
+    "text": "If you had unlimited budget and one year, what problem would you solve?",
+    "targetSeconds": [45, 90],
+    "coach": "They want to see ambition, creativity, and what you genuinely care about.",
+    "structure": null
+  },
+  {
+    "id": "curve-7",
+    "category": "Curveballs",
+    "text": "What's a popular best practice in your field that you think is overrated?",
+    "targetSeconds": [45, 90],
+    "coach": "They're testing independent thinking and whether you follow dogma blindly.",
+    "structure": null
+  },
+  {
+    "id": "curve-8",
+    "category": "Curveballs",
+    "text": "Teach me something in the next 60 seconds.",
+    "targetSeconds": [45, 90],
+    "coach": "They want to see communication skill, enthusiasm, and how you perform on the spot.",
+    "structure": null
+  },
+  {
+    "id": "free-1",
+    "category": "Free Talk",
+    "text": "Describe your ideal weekend morning.",
+    "targetSeconds": [60, 120],
+    "coach": "Practice vivid description and natural storytelling.",
+    "structure": null
+  },
+  {
+    "id": "free-2",
+    "category": "Free Talk",
+    "text": "Talk about a book, show, or podcast that changed how you think.",
+    "targetSeconds": [60, 120],
+    "coach": "Practice explaining abstract ideas in a conversational, engaging way.",
+    "structure": null
+  },
+  {
+    "id": "free-3",
+    "category": "Free Talk",
+    "text": "Describe a place you've visited that surprised you.",
+    "targetSeconds": [60, 120],
+    "coach": "Practice sensory storytelling and building a scene for your listener.",
+    "structure": null
+  },
+  {
+    "id": "free-4",
+    "category": "Free Talk",
+    "text": "Tell me about a hobby you picked up as an adult.",
+    "targetSeconds": [60, 120],
+    "coach": "Practice showing enthusiasm and explaining your learning process.",
+    "structure": null
+  },
+  {
+    "id": "free-5",
+    "category": "Free Talk",
+    "text": "Describe your relationship with technology outside of work.",
+    "targetSeconds": [60, 120],
+    "coach": "Practice balanced self-reflection without being overly rehearsed.",
+    "structure": null
+  },
+  {
+    "id": "free-6",
+    "category": "Free Talk",
+    "text": "Talk about a meal or food experience that's stuck with you.",
+    "targetSeconds": [60, 120],
+    "coach": "Practice evoking emotion and sensory detail in a short monologue.",
+    "structure": null
+  },
+  {
+    "id": "free-7",
+    "category": "Free Talk",
+    "text": "Describe a person who shaped who you are today.",
+    "targetSeconds": [60, 120],
+    "coach": "Practice telling a personal story with gratitude and specificity.",
+    "structure": null
+  },
+  {
+    "id": "free-8",
+    "category": "Free Talk",
+    "text": "What's something you used to believe strongly but have since changed your mind about?",
+    "targetSeconds": [60, 120],
+    "coach": "Practice showing intellectual growth and narrating a belief transition.",
+    "structure": null
+  },
+  {
+    "id": "free-9",
+    "category": "Free Talk",
+    "text": "Describe the best team or community you've ever been part of.",
+    "targetSeconds": [60, 120],
+    "coach": "Practice expressing what you value in groups without sounding generic.",
+    "structure": null
+  },
+  {
+    "id": "free-10",
+    "category": "Free Talk",
+    "text": "Talk about a small daily ritual that keeps you grounded.",
+    "targetSeconds": [60, 120],
+    "coach": "Practice turning a simple topic into something genuinely interesting.",
+    "structure": null
+  },
+  {
+    "id": "free-11",
+    "category": "Free Talk",
+    "text": "Describe a challenge you set for yourself that nobody asked you to do.",
+    "targetSeconds": [60, 120],
+    "coach": "Practice conveying internal motivation and self-driven narrative.",
+    "structure": null
+  },
+  {
+    "id": "free-12",
+    "category": "Free Talk",
+    "text": "What would you do with an unexpected free month off?",
+    "targetSeconds": [60, 120],
+    "coach": "Practice speaking freely about hypotheticals with structure and energy.",
+    "structure": null
+  },
+  {
+    "id": "free-13",
+    "category": "Free Talk",
+    "text": "Describe a moment that made you feel genuinely proud outside of work.",
+    "targetSeconds": [60, 120],
+    "coach": "Practice vulnerability and emotional range in a low-stakes context.",
+    "structure": null
+  },
+  {
+    "id": "free-14",
+    "category": "Free Talk",
+    "text": "Talk about something you find fascinating that most people overlook.",
+    "targetSeconds": [60, 120],
+    "coach": "Practice making a niche topic accessible and contagiously interesting.",
+    "structure": null
+  },
+  {
+    "id": "free-15",
+    "category": "Free Talk",
+    "text": "Describe your neighborhood or city to someone who's never been.",
+    "targetSeconds": [60, 120],
+    "coach": "Practice painting a picture with words and organizing spatial information.",
+    "structure": null
+  },
+  {
+    "id": "free-16",
+    "category": "Free Talk",
+    "text": "Tell me about a tradition—family, cultural, or personal—that matters to you.",
+    "targetSeconds": [60, 120],
+    "coach": "Practice weaving meaning and personal identity into a brief narrative.",
+    "structure": null
+  }
+]
