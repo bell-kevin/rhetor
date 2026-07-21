@@ -2,6 +2,8 @@
 
 **A speaking coach that never hears you — everything runs in your browser.**
 
+https://speakingcoach.net
+
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 rhetor is a fully client-side AI interview and public-speaking coach. Record yourself answering interview questions, get instant transcription and delivery analysis — all without any data leaving your device.
