@@ -63,10 +63,12 @@ npm run build
 
 | Model | Download | Accuracy | Recommended for |
 |---|---|---|---|
-| whisper-tiny.en | ~40-60 MB | Good | Phones, fast feedback |
-| whisper-base.en | ~80-150 MB | Better | Desktop, accuracy |
+| whisper-tiny.en | ~40-120 MB | Good | Phones, fast feedback |
+| whisper-base.en | ~80-200 MB | Better | Desktop, accuracy |
 
-Models are cached by the browser's Cache API after first download.
+Download size depends on whether the browser uses the compact WASM model or the
+WebGPU-optimized model. Models are cached by the browser's Cache API after the
+first download.
 
 ## Browser support
 

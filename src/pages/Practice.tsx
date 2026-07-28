@@ -4,12 +4,24 @@ import { VUMeter } from '@/components/VUMeter';
 import { TallyLamp } from '@/components/TallyLamp';
 import { Timecode } from '@/components/Timecode';
 import { ModelLoader } from '@/components/ModelLoader';
+import { TranscriptionProgress } from '@/components/TranscriptionProgress';
 import { startRecording, decodeAndResample, type RecordingHandle } from '@/lib/audio';
-import { loadModel, transcribe, isModelLoaded, type ASRProgress } from '@/lib/asr';
+import {
+  getASRBackend,
+  loadModel,
+  transcribe,
+  isModelLoaded,
+  type ASRProgress,
+} from '@/lib/asr';
 import { analyzeSession } from '@/lib/analysis';
 import type { AnalysisConfig } from '@/lib/analysis/types';
 import { saveSession, type Session } from '@/lib/db';
 import { loadSettings } from '@/lib/settings';
+import {
+  blendLiveEstimate,
+  getEstimatedTranscriptionSeconds,
+  recordTranscriptionPerformance,
+} from '@/lib/transcriptionTiming';
 import questions from '@/data/questions.json';
 
 interface PracticePageProps {
@@ -26,6 +38,8 @@ interface QuestionEntry {
   coach: string;
   structure: string | null;
 }
+
+type ProcessingStage = 'idle' | 'loading' | 'decoding' | 'transcribing' | 'analyzing' | 'saving';
 
 const allQuestions = questions as QuestionEntry[];
 const categories = [...new Set(allQuestions.map((q) => q.category))];
@@ -61,6 +75,12 @@ export function PracticePage({ mode, step, navigate }: PracticePageProps) {
   const [modelProgress, setModelProgress] = useState<ASRProgress | null>(null);
   const [modelError, setModelError] = useState<string | null>(null);
   const [processingStatus, setProcessingStatus] = useState('');
+  const [processingStage, setProcessingStage] = useState<ProcessingStage>('idle');
+  const [transcriptionElapsed, setTranscriptionElapsed] = useState(0);
+  const [transcriptionEstimate, setTranscriptionEstimate] = useState<number | null>(null);
+  const [transcriptionChunks, setTranscriptionChunks] = useState({ completed: 0, total: 0 });
+  const transcriptionStartedAtRef = useRef<number | null>(null);
+  const mountedRef = useRef(true);
 
   const startPractice = useCallback(() => {
     let selected: QuestionEntry[] = [];
@@ -115,6 +135,46 @@ export function PracticePage({ mode, step, navigate }: PracticePageProps) {
     return () => clearInterval(timer);
   }, [prepCountdown]);
 
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
+
+  // Start model loading and WebGPU shader compilation while the user records,
+  // so this work is usually finished before they press Stop.
+  useEffect(() => {
+    if (step !== 'record') return;
+    let active = true;
+
+    void loadModel(settings.modelId, (progress) => {
+      if (active) setModelProgress(progress);
+    }).catch(() => {
+      // The processing flow retries and presents the existing download error UI.
+    });
+
+    return () => {
+      active = false;
+    };
+  }, [step, settings.modelId]);
+
+  useEffect(() => {
+    if (processingStage !== 'transcribing' || transcriptionStartedAtRef.current === null) {
+      return;
+    }
+
+    const updateElapsed = () => {
+      if (transcriptionStartedAtRef.current !== null) {
+        setTranscriptionElapsed((performance.now() - transcriptionStartedAtRef.current) / 1000);
+      }
+    };
+
+    updateElapsed();
+    const timer = window.setInterval(updateElapsed, 200);
+    return () => window.clearInterval(timer);
+  }, [processingStage]);
+
   const startRec = useCallback(async () => {
     try {
       const constraints: MediaStreamConstraints = {
@@ -147,24 +207,84 @@ export function PracticePage({ mode, step, navigate }: PracticePageProps) {
 
     // Process
     setProcessing(true);
+    setModelError(null);
+    const modelReady = isModelLoaded(settings.modelId);
+    setProcessingStage(modelReady ? 'decoding' : 'loading');
+    setProcessingStatus(modelReady ? 'Decoding audio...' : 'Loading speech model...');
     navigate(`practice/${mode}/processing`);
 
     try {
       // Load model if not loaded
-      if (!isModelLoaded()) {
+      if (!modelReady) {
         setProcessingStatus('Loading speech model...');
         await loadModel(settings.modelId, setModelProgress);
       }
 
       // Decode audio
+      setProcessingStage('decoding');
       setProcessingStatus('Decoding audio...');
       const pcm = await decodeAndResample(blob);
+      const audioSeconds = pcm.length / 16000;
 
       // Transcribe
+      const backend = getASRBackend() ?? 'wasm';
+      const initialEstimate = getEstimatedTranscriptionSeconds(
+        audioSeconds,
+        settings.modelId,
+        backend,
+      );
+      const startedAt = performance.now();
+      let currentAttempt = 1;
+      let attemptStartedAt = startedAt;
+      let elapsedBeforeAttempt = 0;
+      let estimatedTotal = initialEstimate;
+
+      transcriptionStartedAtRef.current = startedAt;
+      setTranscriptionElapsed(0);
+      setTranscriptionEstimate(initialEstimate);
+      setTranscriptionChunks({ completed: 0, total: 0 });
+      setProcessingStage('transcribing');
       setProcessingStatus('Transcribing on your device...');
-      const result = await transcribe(pcm);
+      const result = await transcribe(pcm, (progress) => {
+        const now = performance.now();
+        const totalElapsed = (now - startedAt) / 1000;
+
+        if (progress.attempt !== currentAttempt) {
+          currentAttempt = progress.attempt;
+          attemptStartedAt = now;
+          elapsedBeforeAttempt = totalElapsed;
+          estimatedTotal = elapsedBeforeAttempt + initialEstimate;
+          setProcessingStatus('Retrying transcription on your device...');
+        } else if (progress.completedChunks > 0) {
+          const attemptElapsed = (now - attemptStartedAt) / 1000;
+          estimatedTotal = elapsedBeforeAttempt + blendLiveEstimate(
+            initialEstimate,
+            attemptElapsed,
+            progress.completedChunks,
+            progress.totalChunks,
+          );
+        }
+
+        setTranscriptionElapsed(totalElapsed);
+        setTranscriptionEstimate(estimatedTotal);
+        setTranscriptionChunks({
+          completed: progress.completedChunks,
+          total: progress.totalChunks,
+        });
+      });
+      const transcriptionSeconds = (performance.now() - startedAt) / 1000;
+      setTranscriptionElapsed(transcriptionSeconds);
+      if (!result.segmentLevel) {
+        recordTranscriptionPerformance(
+          audioSeconds,
+          transcriptionSeconds,
+          settings.modelId,
+          backend,
+        );
+      }
 
       // Analyze
+      setProcessingStage('analyzing');
       setProcessingStatus('Analyzing delivery...');
       const config: AnalysisConfig = {
         targetWpmMin: settings.targetWpmMin,
@@ -190,10 +310,16 @@ export function PracticePage({ mode, step, navigate }: PracticePageProps) {
         analysis,
       };
 
+      setProcessingStage('saving');
+      setProcessingStatus('Saving session...');
       await saveSession(session, blob);
-      navigate(`results/${session.id}`);
+      if (mountedRef.current) {
+        navigate(`results/${session.id}`);
+      }
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
+      setProcessingStage('idle');
+      transcriptionStartedAtRef.current = null;
       setModelError(msg);
       setProcessing(false);
     }
@@ -202,6 +328,11 @@ export function PracticePage({ mode, step, navigate }: PracticePageProps) {
   const retryModel = useCallback(() => {
     setModelError(null);
     setProcessing(false);
+    setProcessingStage('idle');
+    setTranscriptionElapsed(0);
+    setTranscriptionEstimate(null);
+    setTranscriptionChunks({ completed: 0, total: 0 });
+    transcriptionStartedAtRef.current = null;
     navigate(`practice/${mode}/record`);
   }, [mode, navigate]);
 
@@ -314,8 +445,16 @@ export function PracticePage({ mode, step, navigate }: PracticePageProps) {
             )}
             <div className="space-y-3">
               <div className="w-8 h-8 border-2 border-vu-amber border-t-transparent rounded-full animate-spin mx-auto" />
-              <p className="text-cream font-mono text-sm">{processingStatus}</p>
+              <p className="text-cream font-mono text-sm" role="status">{processingStatus}</p>
             </div>
+            {processingStage === 'transcribing' && (
+              <TranscriptionProgress
+                elapsedSeconds={transcriptionElapsed}
+                estimatedTotalSeconds={transcriptionEstimate}
+                completedChunks={transcriptionChunks.completed}
+                totalChunks={transcriptionChunks.total}
+              />
+            )}
           </>
         )}
       </div>

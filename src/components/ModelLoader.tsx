@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-only
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { ASRProgress } from '@/lib/asr';
 
 interface ModelLoaderProps {
@@ -11,15 +11,32 @@ interface ModelLoaderProps {
 
 export function ModelLoader({ progress, modelId, onRetry, error }: ModelLoaderProps) {
   const [dismissed, setDismissed] = useState(false);
+
+  useEffect(() => {
+    if (error) {
+      setDismissed(false);
+      return;
+    }
+    if (progress?.status !== 'ready') return;
+    const timer = window.setTimeout(() => setDismissed(true), 500);
+    return () => window.clearTimeout(timer);
+  }, [error, progress?.status]);
+
   if (dismissed) return null;
 
   const modelName = modelId.includes('base') ? 'whisper-base.en' : 'whisper-tiny.en';
-  const sizeNote = modelId.includes('base') ? '~80–150 MB' : '~40–60 MB';
+  const usesWebGpu = 'gpu' in navigator;
+  const sizeNote = modelId.includes('base')
+    ? (usesWebGpu ? '~200 MB' : '~80 MB')
+    : (usesWebGpu ? '~120 MB' : '~40 MB');
 
   let percent = 0;
   let status = 'Preparing model download...';
   if (progress) {
-    if (progress.progress !== undefined) {
+    if (progress.status === 'warming') {
+      percent = 100;
+      status = 'Optimizing the model for this device...';
+    } else if (progress.progress !== undefined) {
       percent = Math.round(progress.progress);
       status = `Downloading ${modelName}...`;
     } else if (progress.status === 'ready') {
@@ -48,10 +65,6 @@ export function ModelLoader({ progress, modelId, onRetry, error }: ModelLoaderPr
         </div>
       </div>
     );
-  }
-
-  if (percent >= 100) {
-    setTimeout(() => setDismissed(true), 500);
   }
 
   return (

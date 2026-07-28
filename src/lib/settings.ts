@@ -16,8 +16,18 @@ export interface AppSettings {
 
 const SETTINGS_KEY = 'rhetor-settings';
 
+export const SPEECH_MODEL_IDS = {
+  tiny: 'onnx-community/whisper-tiny.en_timestamped',
+  base: 'onnx-community/whisper-base.en_timestamped',
+} as const;
+
+const LEGACY_MODEL_IDS: Record<string, string> = {
+  'onnx-community/whisper-tiny.en': SPEECH_MODEL_IDS.tiny,
+  'onnx-community/whisper-base.en': SPEECH_MODEL_IDS.base,
+};
+
 export const DEFAULT_SETTINGS: AppSettings = {
-  modelId: 'onnx-community/whisper-tiny.en',
+  modelId: SPEECH_MODEL_IDS.tiny,
   targetWpmMin: 115,
   targetWpmMax: 160,
   fillerWords: [
@@ -38,7 +48,9 @@ export function loadSettings(): AppSettings {
   try {
     const raw = localStorage.getItem(SETTINGS_KEY);
     if (raw) {
-      return { ...DEFAULT_SETTINGS, ...JSON.parse(raw) };
+      const loaded = { ...DEFAULT_SETTINGS, ...JSON.parse(raw) } as AppSettings;
+      loaded.modelId = LEGACY_MODEL_IDS[loaded.modelId] ?? loaded.modelId;
+      return loaded;
     }
   } catch { /* ignore */ }
   return { ...DEFAULT_SETTINGS };

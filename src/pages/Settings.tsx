@@ -1,6 +1,12 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 import { useState, useEffect } from 'react';
-import { loadSettings, saveSettings, type AppSettings, DEFAULT_SETTINGS } from '@/lib/settings';
+import {
+  loadSettings,
+  saveSettings,
+  type AppSettings,
+  DEFAULT_SETTINGS,
+  SPEECH_MODEL_IDS,
+} from '@/lib/settings';
 import { deleteEverything, exportAllData } from '@/lib/db';
 
 interface SettingsPageProps {
@@ -59,30 +65,31 @@ export function SettingsPage({ navigate }: SettingsPageProps) {
           <label className="flex items-center gap-3 cursor-pointer">
             <input
               type="radio"
-              checked={settings.modelId === 'onnx-community/whisper-tiny.en'}
-              onChange={() => update({ modelId: 'onnx-community/whisper-tiny.en' })}
+              checked={settings.modelId === SPEECH_MODEL_IDS.tiny}
+              onChange={() => update({ modelId: SPEECH_MODEL_IDS.tiny })}
               className="accent-vu-amber"
             />
             <div>
               <span className="text-sm text-cream">whisper-tiny.en</span>
-              <span className="text-xs text-cream-dim ml-2">~40-60 MB, faster, recommended for phones</span>
+              <span className="text-xs text-cream-dim ml-2">~40–120 MB, faster, recommended for phones</span>
             </div>
           </label>
           <label className="flex items-center gap-3 cursor-pointer">
             <input
               type="radio"
-              checked={settings.modelId === 'onnx-community/whisper-base.en'}
-              onChange={() => update({ modelId: 'onnx-community/whisper-base.en' })}
+              checked={settings.modelId === SPEECH_MODEL_IDS.base}
+              onChange={() => update({ modelId: SPEECH_MODEL_IDS.base })}
               className="accent-vu-amber"
             />
             <div>
               <span className="text-sm text-cream">whisper-base.en</span>
-              <span className="text-xs text-cream-dim ml-2">~80-150 MB, more accurate</span>
+              <span className="text-xs text-cream-dim ml-2">~80–200 MB, more accurate</span>
             </div>
           </label>
         </div>
         <p className="text-xs text-cream-dim">
-          Changing models requires a new download on next use. The previous model stays cached.
+          Download size depends on browser acceleration. Changing models requires a new download
+          on next use; the previous model stays cached.
         </p>
       </section>
 
