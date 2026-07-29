@@ -1,4 +1,7 @@
-# rhetor
+<a name="readme-top"></a>
+
+
+# Rhetor
 
 **A speaking coach that never hears you — everything runs in your browser.**
 
@@ -85,3 +88,5 @@ rhetor is free software released under the [GNU Affero General Public License v3
 ### Why AGPL
 
 Anyone who hosts a modified copy of rhetor must publish their changes under the same license. This ensures that improvements to the speech analysis engine, question bank, or UI remain available to everyone. The AGPL was chosen specifically because a speaking coach collects sensitive data (your voice) — users deserve to verify that no hosted version secretly transmits their recordings.
+
+<p align="right"><a href="#readme-top">back to top</a></p>
